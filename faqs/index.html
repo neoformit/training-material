@@ -1,40 +1,82 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Galaxy Training!</title>
+        <title>Frequently Asked Questions</title>
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@ccccd1fb4d0598ecdaabad8b57a5835f5cd13dcf",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/faqs/">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1695112553' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1695112553' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Frequently Asked Questions">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-01-23 11:57:20 +0000">
 
         
         
         
         
+        <meta name="description" content="Collection of tutorials developed and maintained by the w...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Frequently Asked Questions">
+        <meta property="og:description" content="Collection of tutorials developed and maintained by the w...">
         
-        <meta name="description" content="Collection of tutorials developed and maintained by the w..." />
-        <meta property="og:title" content="Galaxy Training" />
-        <meta property="og:description" content="Collection of tutorials developed and maintained by the w..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1695112553'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,38 +93,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/faqs/&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/faqs/&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/faqs/&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/faqs/&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/faqs/&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/faqs/&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -118,8 +132,7 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/faqs/" title="Edit on GitHub">
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/faqs/index.md" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
 
@@ -131,6 +144,7 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
             <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
                 <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
@@ -143,27 +157,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -173,16 +174,15 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-12-01/faqs/" title="Version 2021-12-01">2021-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-12-01/faqs/">2021-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-11-01/faqs/" title="Version 2021-11-01">2021-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-11-01/faqs/">2021-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-10-01/faqs/" title="Version 2021-10-01">2021-10-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-10-01/faqs/">2021-10-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -195,7 +195,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -209,53 +209,137 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         <section>
-  <h1></h1>
+  <h1>Frequently Asked Questions</h1>
 
-  <h1 id="frequently-asked-questions">Frequently Asked Questions</h1>
+  <p>Thanks for using the GTN! If you have any questions regarding the GTN, Galaxy, or any of the topics covered by the tutorials, you can check one of the FAQ pages below to see if your question is among them.</p>
 
-<p>Thanks for using the GTN! If you have any questions regarding the GTN, Galaxy, or any of the topics covered by the tutorials, you can check one of the FAQ pages below to see if your question is among them.</p>
+<h2 id="general-faqs">General FAQs</h2>
 
-<h2 id="quick-start">Quick start</h2>
+<p>Common questions about the Galaxy platform, or about the GTN itself, can be found on the following pages:</p>
 
-<p><a href="/training-material/faqs/galaxy/"><button type="button" class="btn btn-warning btn-info">Galaxy FAQs</button></a>
-<a href="/training-material/faqs/gtn/"><button type="button" class="btn btn-warning btn-info">GTN FAQs</button></a></p>
+<div>
 
-<h2 id="gtn-questions">GTN Questions</h2>
+<!--
+add a button, include configuration options:
 
-<p>Have questions about this website or the GTN in general? Please check the <a href="/training-material/faqs/gtn/">GTN FAQs</a></p>
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
 
-<h2 id="galaxy-questions">Galaxy Questions</h2>
 
-<p>Have a question about Galaxy? Please check the <a href="/training-material/faqs/galaxy/">Galaxy FAQs</a></p>
+
+
+<a href="/training-material/faqs/galaxy" class="btn btn-square-large btn-yellow"><div>Galaxy FAQs</div></a>
+
+
+<!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/faqs/gtn" class="btn btn-square-large btn-purple"><div>GTN FAQs</div></a>
+
+
+</div>
 
 <h2 id="topic-faq-pages">Topic FAQ pages</h2>
 
 <p>Each topic in the GTN also has a dedicated FAQ page:</p>
 
-<p><strong>Galaxy for Scientists</strong></p>
+<h3 id="galaxy-for-scientists">Galaxy for Scientists</h3>
 
-<ul>
+<div>
 
-  
-<li><a href="/training-material/topics/introduction/faqs/"> Introduction to Galaxy Analyses</a></li>
-  
 
-  
 
-  
-<li><a href="/training-material/topics/assembly/faqs/"> Assembly</a></li>
+
   
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
 
+
+
+
+<a href="/training-material/topics/assembly/faqs/" class="btn btn-square-large btn-red"><div>Assembly</div></a>
+
+
+    
   
 
   
-<li><a href="/training-material/topics/climate/faqs/"> Climate</a></li>
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/climate/faqs/" class="btn btn-square-large btn-orange"><div>Climate</div></a>
+
+
+    
   
 
   
-<li><a href="/training-material/topics/computational-chemistry/faqs/"> Computational chemistry</a></li>
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/computational-chemistry/faqs/" class="btn btn-square-large btn-yellow"><div>Computational chemistry</div></a>
+
+
+    
   
 
   
@@ -263,17 +347,80 @@
   
 
   
+    
+    
+    
+    
 
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/ecology/faqs/" class="btn btn-square-large btn-green"><div>Ecology</div></a>
+
+
+    
   
 
   
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/epigenetics/faqs/" class="btn btn-square-large btn-blue"><div>Epigenetics</div></a>
+
 
+    
   
-<li><a href="/training-material/topics/ecology/faqs/"> Ecology</a></li>
+
   
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/evolution/faqs/" class="btn btn-square-large btn-purple"><div>Evolution</div></a>
 
+
+    
   
-<li><a href="/training-material/topics/epigenetics/faqs/"> Epigenetics</a></li>
+
   
 
   
@@ -281,73 +428,366 @@
   
 
   
-<li><a href="/training-material/topics/genome-annotation/faqs/"> Genome Annotation</a></li>
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/genome-annotation/faqs/" class="btn btn-square-large btn-pink"><div>Genome Annotation</div></a>
+
+
+    
   
 
   
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
 
+<a href="/training-material/topics/ai4life/faqs/" class="btn btn-square-large btn-red"><div>Image analysis using Deep Learning</div></a>
+
+
+    
   
-<li><a href="/training-material/topics/imaging/faqs/"> Imaging</a></li>
+
   
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
 
+
+<a href="/training-material/topics/imaging/faqs/" class="btn btn-square-large btn-orange"><div>Imaging</div></a>
+
+
+    
   
 
   
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
 
+
+<a href="/training-material/topics/introduction/faqs/" class="btn btn-square-large btn-yellow"><div>Introduction to Galaxy Analyses</div></a>
+
+
+    
   
 
   
-<li><a href="/training-material/topics/metabolomics/faqs/"> Metabolomics</a></li>
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/metabolomics/faqs/" class="btn btn-square-large btn-green"><div>Metabolomics</div></a>
+
+
+    
   
 
   
-<li><a href="/training-material/topics/metagenomics/faqs/"> Metagenomics</a></li>
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/metagenomics/faqs/" class="btn btn-square-large btn-blue"><div>Metagenomics</div></a>
+
+
+    
   
 
   
-<li><a href="/training-material/topics/proteomics/faqs/"> Proteomics</a></li>
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/proteomics/faqs/" class="btn btn-square-large btn-purple"><div>Proteomics</div></a>
+
+
+    
   
 
   
-<li><a href="/training-material/topics/sequence-analysis/faqs/"> Sequence analysis</a></li>
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/sequence-analysis/faqs/" class="btn btn-square-large btn-pink"><div>Sequence analysis</div></a>
+
+
+    
   
 
   
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
 
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/single-cell/faqs/" class="btn btn-square-large btn-red"><div>Single Cell</div></a>
+
+
+    
   
-<li><a href="/training-material/topics/statistics/faqs/"> Statistics and machine learning</a></li>
+
   
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/statistics/faqs/" class="btn btn-square-large btn-orange"><div>Statistics and machine learning</div></a>
+
 
+    
   
 
   
-<li><a href="/training-material/topics/transcriptomics/faqs/"> Transcriptomics</a></li>
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/synthetic-biology/faqs/" class="btn btn-square-large btn-yellow"><div>Synthetic Biology</div></a>
+
+
+    
   
 
   
-<li><a href="/training-material/topics/variant-analysis/faqs/"> Variant Analysis</a></li>
+
   
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
 
+<a href="/training-material/topics/transcriptomics/faqs/" class="btn btn-square-large btn-green"><div>Transcriptomics</div></a>
+
+
+    
   
 
   
-<li><a href="/training-material/topics/visualisation/faqs/"> Visualisation</a></li>
+
   
+    
+    
+    
+    
 
-</ul>
+    <!--
+add a button, include configuration options:
 
-<p><strong>Galaxy for Instructors, Developers &amp; System Administrators</strong></p>
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
 
-<ul>
 
-  
+
+
+<a href="/training-material/topics/variant-analysis/faqs/" class="btn btn-square-large btn-blue"><div>Variant Analysis</div></a>
+
 
+    
   
-<li><a href="/training-material/topics/admin/faqs/"> Galaxy Server administration</a></li>
+
   
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/visualisation/faqs/" class="btn btn-square-large btn-purple"><div>Visualisation</div></a>
 
+
+    
   
+
+
+</div>
 
+<h3 id="galaxy-for-instructors-developers--system-administrators">Galaxy for Instructors, Developers &amp; System Administrators</h3>
+
+<div>
+
   
 
   
@@ -355,29 +795,144 @@
   
 
   
-<li><a href="/training-material/topics/contributing/faqs/"> Contributing to the Galaxy Training Material</a></li>
+
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/contributing/faqs/" class="btn btn-square-large btn-pink"><div>Contributing to the Galaxy Training Material</div></a>
+
+
+    
+
   
 
   
 
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/dev/faqs/" class="btn btn-square-large btn-red"><div>Development in Galaxy</div></a>
+
+
+    
+
   
 
   
-<li><a href="/training-material/topics/data-science/faqs/"> Foundations of Data Science</a></li>
+
   
 
   
-<li><a href="/training-material/topics/dev/faqs/"> Development in Galaxy</a></li>
+
   
+
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
 
+
+
+
+<a href="/training-material/topics/fair/faqs/" class="btn btn-square-large btn-orange"><div>FAIR Data, Workflows, and Research</div></a>
+
+
+    
+
   
 
   
+
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/data-science/faqs/" class="btn btn-square-large btn-yellow"><div>Foundations of Data Science</div></a>
+
+
+    
 
   
 
   
-<li><a href="/training-material/topics/galaxy-interface/faqs/"> Using Galaxy and Managing your Data</a></li>
+
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/admin/faqs/" class="btn btn-square-large btn-green"><div>Galaxy Server administration</div></a>
+
+
+    
+
   
 
   
@@ -389,7 +944,7 @@
   
 
   
-<li><a href="/training-material/topics/instructors/faqs/"> Teaching and Hosting Galaxy training</a></li>
+
   
 
   
@@ -403,12 +958,58 @@
   
 
   
+
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
 
+
+
+
+<a href="/training-material/topics/teaching/faqs/" class="btn btn-square-large btn-blue"><div>Teaching and Hosting Galaxy training</div></a>
+
+
+    
+
   
 
   
 
   
+
+    
+    
+    
+    
+
+    <!--
+add a button, include configuration options:
+
+ link: "https://example.com"
+ label: this text goes on button
+ size: small/medium/large/extralarge
+ colour:  blue/purple/green/red/yellow/lightblue/white/black
+ square: false , if you want a regular rectangular button
+-->
+
+
+
+
+<a href="/training-material/topics/galaxy-interface/faqs/" class="btn btn-square-large btn-purple"><div>Using Galaxy and Managing your Data</div></a>
+
+
+    
 
   
 
@@ -416,7 +1017,7 @@
 
   
 
-</ul>
+</div>
 
 <h2 id="tutorial-faq-pages">Tutorial FAQ pages</h2>
 
@@ -430,55 +1031,48 @@
 </section>
 
         </div>
-        
-            <footer>
-    <div class="container">
-        <br><br>
-        <p>
-            The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
-            provides researchers with online training materials, connects them with local trainers, and helps promoting open data analysis practices worldwide.
-        </p>
-        <p>
-The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
-</p>
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/57799a8c856c0806d6a93e66bdd3d7169ab79567">57799a8c856c0806d6a93e66bdd3d7169ab79567</a></p>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/ccccd1fb4d0598ecdaabad8b57a5835f5cd13dcf">ccccd1f</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/faqs/index.md" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
     </div>
 </footer>
 
-        
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1695112553'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

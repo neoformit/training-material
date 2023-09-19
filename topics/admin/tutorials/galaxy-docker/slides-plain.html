@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,33 +8,77 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@ccccd1fb4d0598ecdaabad8b57a5835f5cd13dcf",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/admin/tutorials/galaxy-docker/slides-plain.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1695112553' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1695112553' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Docker and Galaxy">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-09-19 08:35:53 +0000">
+<meta name="DC.creator" content="Bérénice Batut">
+<meta name="DC.creator" content="Björn Grüning">
 
         
         
         
         
+        <meta name="description" content="Collection of tutorials developed and maintained by the w...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Docker and Galaxy">
+        <meta property="og:description" content="Collection of tutorials developed and maintained by the w...">
         
-        <meta name="description" content="Collection of tutorials developed and maintained by the w..." />
-        <meta property="og:title" content="Galaxy Training: Docker and Galaxy" />
-        <meta property="og:description" content="Collection of tutorials developed and maintained by the w..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1695112553'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,38 +95,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/galaxy-docker/slides-plain.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/galaxy-docker/slides-plain.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/galaxy-docker/slides-plain.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/galaxy-docker/slides-plain.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/galaxy-docker/slides-plain.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/admin/tutorials/galaxy-docker/slides-plain.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -118,8 +134,7 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/admin/tutorials/galaxy-docker/slides-plain.md" title="Edit on GitHub">
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/./topics/admin/tutorials/galaxy-docker/slides.html" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
 
@@ -131,6 +146,7 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
             <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
                 <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
@@ -143,27 +159,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -173,16 +176,15 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-12-01/topics/admin/tutorials/galaxy-docker/slides-plain.html" title="Version 2021-12-01">2021-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-12-01/topics/admin/tutorials/galaxy-docker/slides-plain.html">2021-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-11-01/topics/admin/tutorials/galaxy-docker/slides-plain.html" title="Version 2021-11-01">2021-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-11-01/topics/admin/tutorials/galaxy-docker/slides-plain.html">2021-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-10-01/topics/admin/tutorials/galaxy-docker/slides-plain.html" title="Version 2021-10-01">2021-10-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-10-01/topics/admin/tutorials/galaxy-docker/slides-plain.html">2021-10-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -195,7 +197,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -209,17 +211,19 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         <section class="tutorial">
 	<a href="https://github.com/galaxyproject/training-material/blob/main//topics/admin/tutorials/galaxy-docker/slides.html">View markdown source on GitHub</a>
 	<h1>Docker and Galaxy</h1>
 		<h2>Contributors</h2>
-		
-<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
+<div markdown="0">
 
- 
-<a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="https://avatars.githubusercontent.com/bgruening?s=27" alt="Avatar">Björn Grüning</a>
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a><a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bgruening?s=36" alt="Avatar" width="36" height="36">Björn Grüning</a>
+	</div>
 
+</div>
 
 
 		
@@ -259,7 +263,7 @@
 
 		
 
-		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Jul 26, 2021 </div>
+		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Sep 19, 2023 </div>
 
 	<hr />
 
@@ -300,7 +304,7 @@ variety of different tools and visualisations</p>
 
 <h2 id="why-docker-what-is-it">Why Docker? <br />What is it?</h2>
 
-<p><img src="../../images/docker_whale.png" alt="Image of a blue whale with containers on its back." loading="lazy" /></p>
+<p><img src="../../images/docker_whale.png" alt="Image of a blue whale with containers on its back." /></p>
 
 <hr />
 
@@ -319,7 +323,7 @@ variety of different tools and visualisations</p>
 
 <h3 id="deployment-issue">Deployment issue</h3>
 
-<p><img src="../../images/deployment_issue.svg" alt="Galaxy is a box with many dependencies like node, java, nginx, python, uwsgi, anaconda. On the right knime is another box with java and eclipse dependencies. Lines show the multiplicity of tools and dependencies trying to run on multiple environments with windows/osx/linux desktops, servers, and the cloud." loading="lazy" /></p>
+<p><img src="../../images/deployment_issue.svg" alt="Galaxy is a box with many dependencies like node, java, nginx, python, uwsgi, anaconda. On the right knime is another box with java and eclipse dependencies. Lines show the multiplicity of tools and dependencies trying to run on multiple environments with windows/osx/linux desktops, servers, and the cloud." /></p>
 
 <hr />
 
@@ -327,13 +331,13 @@ variety of different tools and visualisations</p>
 
 <p>Matrix from Hell</p>
 
-<p><img src="../../images/deployment_issue_matrix.svg" alt="Galaxy and knime form the y axis of a table with a lot of question marks about which environments support them." loading="lazy" /></p>
+<p><img src="../../images/deployment_issue_matrix.svg" alt="Galaxy and knime form the y axis of a table with a lot of question marks about which environments support them." /></p>
 
 <hr />
 
 <h3 id="transport-pre-1960">Transport Pre 1960</h3>
 
-<p><img src="../../images/cargo_transport_issue.svg" alt="Icons for multiple types of goods shown multiple methods for transport and storing." loading="lazy" /></p>
+<p><img src="../../images/cargo_transport_issue.svg" alt="Icons for multiple types of goods shown multiple methods for transport and storing." /></p>
 
 <hr />
 
@@ -341,13 +345,13 @@ variety of different tools and visualisations</p>
 
 <p>Matrix from Hell</p>
 
-<p><img src="../../images/cargo_transport_matrix.svg" alt="A similar table full of question marks between goods and shipment methods is shown." loading="lazy" /></p>
+<p><img src="../../images/cargo_transport_matrix.svg" alt="A similar table full of question marks between goods and shipment methods is shown." /></p>
 
 <hr />
 
 <h3 id="intermodal-shipping-container">Intermodal shipping container</h3>
 
-<p><img src="../../images/cargo_transport_solution.svg" alt="A blue shipping container is shown solving the transport problem by being a one size container to fit all sorts of goods, on all sorts of transports." loading="lazy" /></p>
+<p><img src="../../images/cargo_transport_solution.svg" alt="A blue shipping container is shown solving the transport problem by being a one size container to fit all sorts of goods, on all sorts of transports." /></p>
 
 <p><span>Speaker Notes</span></p>
 
@@ -369,7 +373,7 @@ variety of different tools and visualisations</p>
 
 <h3 id="docker">Docker</h3>
 
-<p><img src="../../images/deployment_solution.svg" alt="Docker logo on a blue shipping container solves the galaxy/knime deployment problem across environments." loading="lazy" /></p>
+<p><img src="../../images/deployment_solution.svg" alt="Docker logo on a blue shipping container solves the galaxy/knime deployment problem across environments." /></p>
 
 <p><span>Speaker Notes</span></p>
 
@@ -386,7 +390,7 @@ variety of different tools and visualisations</p>
 
 <h3 id="a-docker-container">A Docker container?</h3>
 
-<p><img src="../../images/WhatIsDocker_1_kernal-2_1.png" alt="A schematic with the kernal below and two containers is shown, each container has different stacks." loading="lazy" /></p>
+<p><img src="../../images/WhatIsDocker_1_kernal-2_1.png" alt="A schematic with the kernal below and two containers is shown, each container has different stacks." /></p>
 
 <p>Lightweight and Open</p>
 
@@ -401,7 +405,7 @@ variety of different tools and visualisations</p>
 
 <h3 id="virtual-machines-vs-containers">Virtual machines vs Containers</h3>
 
-<p><img src="../../images/container_vs_vm.svg" alt="A cartoon comparing containers vs VMs. On the left the VMs are presented as a layer of server, host os, and hypervisor (type 2) followed by several tall pillars of guest OS, bin/libs and finally their respective apps. Everything is siloed. On the right is containers where the layers are server, host os, and docker engine. Above those are very short pillars of each different app, and when duplicate apps are run, the bin/libs are shown as shared. Text reads: containers are isolated but share OS and where appropriate, bins/libraries." loading="lazy" /></p>
+<p><img src="../../images/container_vs_vm.svg" alt="A cartoon comparing containers vs VMs. On the left the VMs are presented as a layer of server, host os, and hypervisor (type 2) followed by several tall pillars of guest OS, bin/libs and finally their respective apps. Everything is siloed. On the right is containers where the layers are server, host os, and docker engine. Above those are very short pillars of each different app, and when duplicate apps are run, the bin/libs are shown as shared. Text reads: containers are isolated but share OS and where appropriate, bins/libraries." /></p>
 
 <p>Containers more portable and efficient</p>
 
@@ -429,13 +433,13 @@ variety of different tools and visualisations</p>
 
 <h2 id="how-to-use-docker">How to use Docker?</h2>
 
-<p><img src="../../images/docker-usage.jpg" alt="A cartoon of a whale with shipping containers atop it." loading="lazy" /></p>
+<p><img src="../../images/docker-usage.jpg" alt="A cartoon of a whale with shipping containers atop it." /></p>
 
 <hr />
 
 <h3 id="the-client">The client</h3>
 
-<p><img src="../../images/docker_command.png" alt="A command line is explained, docker is the program you're using, run is the subcommand that creates and runs a container, and hello-world is the image you want to load." loading="lazy" /></p>
+<p><img src="../../images/docker_command.png" alt="A command line is explained, docker is the program you're using, run is the subcommand that creates and runs a container, and hello-world is the image you want to load." /></p>
 
 <p><span>Speaker Notes</span></p>
 
@@ -449,7 +453,7 @@ variety of different tools and visualisations</p>
 
 <h3 id="containers-images">Containers? Images?</h3>
 
-<p><img src="../../images/docker_concept_image_container.png" alt="A single container labelled galaxy with postgres, nginx, and python inside is shown pointing to three other galaxy containers." loading="lazy" /></p>
+<p><img src="../../images/docker_concept_image_container.png" alt="A single container labelled galaxy with postgres, nginx, and python inside is shown pointing to three other galaxy containers." /></p>
 
 <p><span>Speaker Notes</span></p>
 
@@ -470,7 +474,7 @@ variety of different tools and visualisations</p>
 
 <h3 id="how-to-get-images">How to get images?</h3>
 
-<p><img src="../../images/docker_concept_pull.png" alt="Images are stored in an image registry which are downloaded with docker pull onto a docker host, where you can run multiple instances of galaxy." loading="lazy" /></p>
+<p><img src="../../images/docker_concept_pull.png" alt="Images are stored in an image registry which are downloaded with docker pull onto a docker host, where you can run multiple instances of galaxy." /></p>
 
 <p><span>Speaker Notes</span></p>
 
@@ -501,7 +505,7 @@ Status: Downloaded newer image <span class="k">for </span>hello-world:latest
 
 <h3 id="creation-of-containers">Creation of containers</h3>
 
-<p><img src="../../images/docker_concept_run.png" alt="Images are stored in an image registry which are downloaded with docker pull onto a docker host, where you can run multiple instances of galaxy." loading="lazy" /></p>
+<p><img src="../../images/docker_concept_run.png" alt="Images are stored in an image registry which are downloaded with docker pull onto a docker host, where you can run multiple instances of galaxy." /></p>
 
 <hr />
 
@@ -680,7 +684,7 @@ root@f4fa8ed32ef8:/cowsay# cowsay Hello Galaxy <span class="o">&gt;</span> cowsa
 
 <h3 id="management-of-data-1">Management of data</h3>
 
-<p><img src="../../images/docker_volume_closed.png" alt="A container is shown with an arrow pointing to data and a big x over it." loading="lazy" /></p>
+<p><img src="../../images/docker_volume_closed.png" alt="A container is shown with an arrow pointing to data and a big x over it." /></p>
 
 <p><span>Speaker Notes</span></p>
 
@@ -690,7 +694,7 @@ root@f4fa8ed32ef8:/cowsay# cowsay Hello Galaxy <span class="o">&gt;</span> cowsa
 
 <h3 id="management-of-data-2">Management of data</h3>
 
-<p><img src="../../images/docker_volume_open.png" alt="The same as before, but inside the container it wants to create a new file in that same folder but it cannot." loading="lazy" /></p>
+<p><img src="../../images/docker_volume_open.png" alt="The same as before, but inside the container it wants to create a new file in that same folder but it cannot." /></p>
 
 <p><span>Speaker Notes</span></p>
 
@@ -700,7 +704,7 @@ root@f4fa8ed32ef8:/cowsay# cowsay Hello Galaxy <span class="o">&gt;</span> cowsa
 
 <h3 id="data-volume">Data volume</h3>
 
-<p><img src="../../images/docker_volume.png" alt="A data volume with two files is shown as a folder, now this is moutned inside two containers." loading="lazy" /></p>
+<p><img src="../../images/docker_volume.png" alt="A data volume with two files is shown as a folder, now this is moutned inside two containers." /></p>
 
 <p><span>Speaker Notes</span></p>
 
@@ -723,7 +727,7 @@ root@f4fa8ed32ef8:/cowsay# cowsay Hello Galaxy <span class="o">&gt;</span> cowsa
 
 <h3 id="data-volume-1">Data volume</h3>
 
-<p><img src="../../images/docker_run_volume.png" alt="Another command line explained, now docker run -v host_dir:container_dir ..., where host_dir is the absolute path or data volume name, and container_dir is where it should be mounted." loading="lazy" /></p>
+<p><img src="../../images/docker_run_volume.png" alt="Another command line explained, now docker run -v host_dir:container_dir ..., where host_dir is the absolute path or data volume name, and container_dir is where it should be mounted." /></p>
 
 <p><span>Speaker Notes</span></p>
 
@@ -750,7 +754,7 @@ cowsay_Galaxy   cowsay_Galaxy2
 
 <h3 id="execution-of-commands-inside-a-running-container">Execution of commands <br />inside a running container</h3>
 
-<p><img src="../../images/docker_concept_exec.png" alt="The schematic of a docker host with three galaxies is running, docker exec points to one of the galaxy containers." loading="lazy" /></p>
+<p><img src="../../images/docker_concept_exec.png" alt="The schematic of a docker host with three galaxies is running, docker exec points to one of the galaxy containers." /></p>
 
 <p><span>Speaker Notes</span></p>
 
@@ -784,7 +788,7 @@ cowsay Galaxy
 
 <h3 id="stopstart-containers">Stop/Start containers</h3>
 
-<p><img src="../../images/docker_concept_start_stop.png" alt="Again the same graphic, but now one of the galaxy containers becomes stopped through the docker stop command and turns grey. Docker start brings it back to running." loading="lazy" /></p>
+<p><img src="../../images/docker_concept_start_stop.png" alt="Again the same graphic, but now one of the galaxy containers becomes stopped through the docker stop command and turns grey. Docker start brings it back to running." /></p>
 
 <p>Note: Sending SIGTERM and then SIGKILL after a grace period</p>
 
@@ -825,7 +829,7 @@ cowsay Galaxy
 
 <h3 id="view-all-containers">View all containers</h3>
 
-<p><img src="../../images/docker_concept_ps.png" alt="docker ps shows a box around the previous graphic and shows running and stopped container." loading="lazy" /></p>
+<p><img src="../../images/docker_concept_ps.png" alt="docker ps shows a box around the previous graphic and shows running and stopped container." /></p>
 
 <hr />
 
@@ -862,7 +866,7 @@ e9195b6512dd        a2107450fdf2           <span class="s2">"/usr/local/bin/tini
 
 <h3 id="creation-of-a-new-image">Creation of a new image</h3>
 
-<p><img src="../../images/docker_concept_build.png" alt="A dockerfile built with docker build builds a new container on the local docker host." loading="lazy" /></p>
+<p><img src="../../images/docker_concept_build.png" alt="A dockerfile built with docker build builds a new container on the local docker host." /></p>
 
 <p><span>Speaker Notes</span></p>
 
@@ -872,17 +876,17 @@ e9195b6512dd        a2107450fdf2           <span class="s2">"/usr/local/bin/tini
 
 <h3 id="view-all-images">View all images</h3>
 
-<p><img src="../../images/docker_concept_image.png" alt="Docker image shows a list of all the images on the docker host that can be run." loading="lazy" /></p>
+<p><img src="../../images/docker_concept_image.png" alt="Docker image shows a list of all the images on the docker host that can be run." /></p>
 
 <hr />
 
 <h3 id="push-your-image-on-a-registry">Push your image on a registry</h3>
 
-<p><img src="../../images/docker_concept_push.png" alt="Docker push is shown pushing the locally built container to the image registry." loading="lazy" /></p>
+<p><img src="../../images/docker_concept_push.png" alt="Docker push is shown pushing the locally built container to the image registry." /></p>
 
 <hr />
 
-<h3 id="hands_on-hands-on-1"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands on! (1)</h3>
+<div class="box-title hands-on-title" id="hands-on-hands-on-1"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Hands on! (1)</div>
 
 <p>Play with <code class="language-plaintext highlighter-rouge">quay.io/biocontainers/samtools:1.3--1</code></p>
 
@@ -898,7 +902,7 @@ e9195b6512dd        a2107450fdf2           <span class="s2">"/usr/local/bin/tini
 
 <hr />
 
-<h3 id="hands_on-hands-on-2"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands on! (2)</h3>
+<div class="box-title hands-on-title" id="hands-on-hands-on-2"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Hands on! (2)</div>
 
 <p>Play with <code class="language-plaintext highlighter-rouge">quay.io/biocontainers/samtools:1.3--1</code></p>
 
@@ -919,7 +923,7 @@ e9195b6512dd        a2107450fdf2           <span class="s2">"/usr/local/bin/tini
 
 <h2 id="how-to-containerize-your-tools">How to containerize your tools?</h2>
 
-<p><img src="../../images/docker-container.jpg" alt="Cartoon of a docker container. " loading="lazy" /></p>
+<p><img src="../../images/docker-container.jpg" alt="Cartoon of a docker container" /></p>
 
 <p><span>Speaker Notes</span></p>
 
@@ -929,7 +933,7 @@ e9195b6512dd        a2107450fdf2           <span class="s2">"/usr/local/bin/tini
 
 <h3 id="how-to-create-your-image">How to create your image?</h3>
 
-<p><img src="../../images/docker_build.svg" alt="Cartoon showing a dockerfile building a container with docker build." loading="lazy" /></p>
+<p><img src="../../images/docker_build.svg" alt="Cartoon showing a dockerfile building a container with docker build." /></p>
 
 <hr />
 
@@ -953,7 +957,7 @@ INSTRUCTION arguments
 
 <h3 id="dockerfile--layers">Dockerfile &amp; Layers</h3>
 
-<p><img src="../../images/dockerfile_layers.svg" alt="dockerfile with steps like run and add and set user and command are shown inverted as the layers of an image, each building on the last." loading="lazy" /></p>
+<p><img src="../../images/dockerfile_layers.svg" alt="dockerfile with steps like run and add and set user and command are shown inverted as the layers of an image, each building on the last." /></p>
 
 <hr />
 
@@ -989,7 +993,7 @@ INSTRUCTION arguments
 
 <hr />
 
-<h3 id="hands_on-hands-on"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands on!</h3>
+<div class="box-title hands-on-title" id="hands-on-hands-on"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Hands on!</div>
 
 <p>Launch a Galaxy Docker Container and try to</p>
 
@@ -1013,7 +1017,7 @@ INSTRUCTION arguments
 
 <h3 id="docker-flavours">Docker flavours</h3>
 
-<p><img src="../../images/rna-workbench-chart.png" alt="Schematic of multiple docker containers and how they layer upon one another. ubuntu forms the base, and requirements builds on that, then galaxy-stable on top of that." loading="lazy" /></p>
+<p><img src="../../images/rna-workbench-chart.png" alt="Schematic of multiple docker containers and how they layer upon one another. ubuntu forms the base, and requirements builds on that, then galaxy-stable on top of that." /></p>
 
 <hr />
 
@@ -1070,7 +1074,7 @@ tools:
 
 <hr />
 
-<h3 id="hands_on-hands-on-1"><i class="fas fa-pencil-alt" aria-hidden="true"></i><span class="visually-hidden">hands_on</span> Hands on!</h3>
+<div class="box-title hands-on-title" id="hands-on-hands-on-1"><i class="fas fa-pencil-alt" aria-hidden="true" ></i> Hands-on: Hands on!</div>
 
 <p>Create a Galaxy Flavour</p>
 
@@ -1078,7 +1082,7 @@ tools:
 
 <h3 id="galaxy-flavor-generator">Galaxy Flavor Generator</h3>
 
-<p><img src="../../images/galaxy_flavour_generator.png" alt="Website used to build custom flavours of galaxy docker containers. " loading="lazy" /></p>
+<p><img src="../../images/galaxy_flavour_generator.png" alt="Website used to build custom flavours of galaxy docker containers" /></p>
 
 <p>https://github.com/galaxyFlavorsGenerators/galaxyFlavorGenerator</p>
 
@@ -1110,8 +1114,6 @@ This material is the result of a collaborative work. Thanks to the <a href="http
 
 
 
-
-
 <img src="/training-material/assets/images/gat.png" alt="page logo" style="height: 100px;"/>
 
 
@@ -1119,56 +1121,53 @@ This material is the result of a collaborative work. Thanks to the <a href="http
 This material is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 </section>
 
+
+
+
+
         </div>
-        
-            <footer>
-    <div class="container">
-        <br><br>
-        <p>
-            The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
-            provides researchers with online training materials, connects them with local trainers, and helps promoting open data analysis practices worldwide.
-        </p>
-        <p>
-The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
-</p>
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/57799a8c856c0806d6a93e66bdd3d7169ab79567">57799a8c856c0806d6a93e66bdd3d7169ab79567</a></p>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/ccccd1fb4d0598ecdaabad8b57a5835f5cd13dcf">ccccd1f</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/./topics/admin/tutorials/galaxy-docker/slides.html" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
     </div>
 </footer>
 
-        
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1695112553'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

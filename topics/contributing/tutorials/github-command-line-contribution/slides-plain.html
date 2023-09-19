@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,33 +8,77 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@ccccd1fb4d0598ecdaabad8b57a5835f5cd13dcf",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/contributing/tutorials/github-command-line-contribution/slides-plain.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1695112553' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1695112553' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Contributing with GitHub via command-line">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-09-19 08:35:53 +0000">
+<meta name="DC.creator" content="Cyril Monjeaud">
+<meta name="DC.creator" content="Bérénice Batut">
 
         
         
         
         
+        <meta name="description" content="Collection of tutorials developed and maintained by the w...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Contributing with GitHub via command-line">
+        <meta property="og:description" content="Collection of tutorials developed and maintained by the w...">
         
-        <meta name="description" content="Collection of tutorials developed and maintained by the w..." />
-        <meta property="og:title" content="Galaxy Training: Contributing with GitHub via command-line" />
-        <meta property="og:description" content="Collection of tutorials developed and maintained by the w..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1695112553'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,38 +95,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/github-command-line-contribution/slides-plain.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/github-command-line-contribution/slides-plain.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/github-command-line-contribution/slides-plain.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/github-command-line-contribution/slides-plain.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/github-command-line-contribution/slides-plain.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/contributing/tutorials/github-command-line-contribution/slides-plain.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -118,8 +134,7 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/contributing/tutorials/github-command-line-contribution/slides-plain.md" title="Edit on GitHub">
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/./topics/contributing/tutorials/github-command-line-contribution/slides.html" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
 
@@ -131,6 +146,7 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
             <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
                 <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
@@ -143,27 +159,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -173,16 +176,15 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-12-01/topics/contributing/tutorials/github-command-line-contribution/slides-plain.html" title="Version 2021-12-01">2021-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-12-01/topics/contributing/tutorials/github-command-line-contribution/slides-plain.html">2021-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-11-01/topics/contributing/tutorials/github-command-line-contribution/slides-plain.html" title="Version 2021-11-01">2021-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-11-01/topics/contributing/tutorials/github-command-line-contribution/slides-plain.html">2021-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-10-01/topics/contributing/tutorials/github-command-line-contribution/slides-plain.html" title="Version 2021-10-01">2021-10-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-10-01/topics/contributing/tutorials/github-command-line-contribution/slides-plain.html">2021-10-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -195,7 +197,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -209,17 +211,19 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         <section class="tutorial">
 	<a href="https://github.com/galaxyproject/training-material/blob/main//topics/contributing/tutorials/github-command-line-contribution/slides.html">View markdown source on GitHub</a>
 	<h1>Contributing with GitHub via command-line</h1>
 		<h2>Contributors</h2>
-		
-<a href="/training-material/hall-of-fame/cmonjeau/" class="contributor-badge contributor-cmonjeau"><img src="https://avatars.githubusercontent.com/cmonjeau?s=27" alt="Avatar">Cyril Monjeaud</a>
+<div markdown="0">
 
- 
-<a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="https://avatars.githubusercontent.com/bebatut?s=27" alt="Avatar">Bérénice Batut</a>
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/cmonjeau/" class="contributor-badge contributor-cmonjeau"><img src="https://avatars.githubusercontent.com/cmonjeau?s=36" alt="Avatar" width="36" height="36">Cyril Monjeaud</a><a href="/training-material/hall-of-fame/bebatut/" class="contributor-badge contributor-bebatut"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bebatut?s=36" alt="Avatar" width="36" height="36">Bérénice Batut</a>
+	</div>
 
+</div>
 
 
 		
@@ -265,7 +269,7 @@
 
 		
 
-		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Jul 26, 2021 </div>
+		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Sep 19, 2023 </div>
 
 	<hr />
 
@@ -301,19 +305,19 @@
 
 <h3 id="fork-from-a-github-repository">Fork from a GitHub repository</h3>
 
-<p><img src="../../images/PR_fork.jpg" alt="Screenshot of github repository header with watch, star and fork buttons. The fork button highlighted. " loading="lazy" /></p>
+<p><img src="../../images/PR_fork.jpg" alt="Screenshot of github repository header with watch, star and fork buttons. The fork button highlighted" /></p>
 
 <hr />
 
 <h3 id="welcome-on-your-fork-repository">Welcome on your fork repository</h3>
 
-<p><img src="../../images/PR_fork_repo.png" alt="Screenshot for a fork of the training material repository. It shows that it is username/training-material and it has been forked from the upstream." loading="lazy" /></p>
+<p><img src="../../images/PR_fork_repo.png" alt="Screenshot for a fork of the training material repository. It shows that it is username/training-material and it has been forked from the upstream." /></p>
 
 <hr />
 
 <h3 id="welcome-on-your-fork-repository-1">Welcome on your fork repository</h3>
 
-<p><img src="../../images/PR_schema_01.png" alt="Cartoon of two github repositories, upstream and fork. Both have branches like main, feature1 and feature2." loading="lazy" /></p>
+<p><img src="../../images/PR_schema_01.png" alt="Cartoon of two github repositories, upstream and fork. Both have branches like main, feature1 and feature2." /></p>
 
 <hr />
 
@@ -323,7 +327,7 @@
 
 <h3 id="get-your-github-url">Get your GitHub URL</h3>
 
-<p><img src="../../images/clone_code_button.png" alt="A subset of the github interface is shown with the green code button clicked. A popup is shown with options to clone from https or ssh, open in github desktop, or download a zip file." loading="lazy" /></p>
+<p><img src="../../images/clone_code_button.png" alt="A subset of the github interface is shown with the green code button clicked. A popup is shown with options to clone from https or ssh, open in github desktop, or download a zip file." /></p>
 
 <hr />
 
@@ -349,7 +353,7 @@
 
 <h3 id="clone-your-github-repository-1">Clone your GitHub repository</h3>
 
-<p><img src="../../images/PR_schema_02.png" alt="The cartoon from before with repositories upstream and fork are now shown to exist on github, and an arrow labelled clone is drawn to a local copy that exists locally." loading="lazy" /></p>
+<p><img src="../../images/PR_schema_02.png" alt="The cartoon from before with repositories upstream and fork are now shown to exist on github, and an arrow labelled clone is drawn to a local copy that exists locally." /></p>
 
 <hr />
 
@@ -365,7 +369,7 @@
 
   <span class="k">*</span> main
 </code></pre></div></div>
-<p><img src="../../images/PR_branch_main.png" alt="a line with dots on it representing commits is labelled main has an arrow pointing to the end where there are no dots." loading="lazy" /></p>
+<p><img src="../../images/PR_branch_main.png" alt="a line with dots on it representing commits is labelled main has an arrow pointing to the end where there are no dots." /></p>
 
 <p>Create a new branch</p>
 
@@ -386,7 +390,7 @@ Switched to a new branch <span class="s1">'my_new_branch'</span>
 	<span class="k">*</span> my_new_branch
 </code></pre></div></div>
 
-<p><img src="../../images/PR_branches_01.png" alt="The line with dots or commits is labelled main, now a different line comes out of the right most (i.e. latest) commit. this is labelled my new branch." loading="lazy" /></p>
+<p><img src="../../images/PR_branches_01.png" alt="The line with dots or commits is labelled main, now a different line comes out of the right most (i.e. latest) commit. this is labelled my new branch." /></p>
 
 <p>Make changes and commits</p>
 
@@ -394,13 +398,13 @@ Switched to a new branch <span class="s1">'my_new_branch'</span>
 <span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"my contribution"</span>
 </code></pre></div></div>
 
-<p><img src="../../images/PR_branches_02.png" alt="The cartoon from above, however now there are commits shown on my new branch." loading="lazy" /></p>
+<p><img src="../../images/PR_branches_02.png" alt="The cartoon from above, however now there are commits shown on my new branch." /></p>
 
 <hr />
 
 <h3 id="make-changes-and-commits">Make changes and commits</h3>
 
-<p><img src="../../images/PR_schema_03.png" alt="The cartoons of the three github repositories are back, upstream, fork, and local. Now local shows a new branch, my new branch." loading="lazy" /></p>
+<p><img src="../../images/PR_schema_03.png" alt="The cartoons of the three github repositories are back, upstream, fork, and local. Now local shows a new branch, my new branch." /></p>
 
 <hr />
 
@@ -409,7 +413,7 @@ Switched to a new branch <span class="s1">'my_new_branch'</span>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git push origin my_new_branch
 </code></pre></div></div>
 
-<p><img src="../../images/PR_schema_04.png" alt="The same cartoon of the three repositories, an arrow labelled push is shown from the local copy to the fork, and now the my new branch is present in the fork, as well as locally like before." loading="lazy" /></p>
+<p><img src="../../images/PR_schema_04.png" alt="The same cartoon of the three repositories, an arrow labelled push is shown from the local copy to the fork, and now the my new branch is present in the fork, as well as locally like before." /></p>
 
 <hr />
 
@@ -419,25 +423,25 @@ Switched to a new branch <span class="s1">'my_new_branch'</span>
 
 <h3 id="cant-push-on-the-original-github-repository">Can’t push on the <em>original</em> GitHub repository</h3>
 
-<p><img src="../../images/PR_schema_05.png" alt="The same cartoon, but now two arrows are shown between the upstream and fork repositories on github. One arrow is labelled push and has an X over it, indicating a push cannot happen. However an arrow labelled pull request is shown in colour like it can happen." loading="lazy" /></p>
+<p><img src="../../images/PR_schema_05.png" alt="The same cartoon, but now two arrows are shown between the upstream and fork repositories on github. One arrow is labelled push and has an X over it, indicating a push cannot happen. However an arrow labelled pull request is shown in colour like it can happen." /></p>
 
 <hr />
 
 <h3 id="create-your-pull-request">Create your pull request</h3>
 
-<p><img src="../../images/PR_button.png" alt="Screenshot of the github interface showing a yellow popup labelled &quot;your recently pushed branches&quot; with my new branch shown in the list. A green button reads compare and pull request." loading="lazy" /></p>
+<p><img src="../../images/PR_button.png" alt="Screenshot of the github interface showing a yellow popup labelled &quot;your recently pushed branches&quot; with my new branch shown in the list. A green button reads compare and pull request." /></p>
 
 <hr />
 
 <h3 id="select-the-branches-and-write-a-description">Select the branches and write a description</h3>
 
-<p><img src="../../images/PR_form.png" alt="The pull request form is shown titled &quot;Open a Pull Request&quot;, the user is busy filling out the title of the pull request. A button at the bottom reads create pull request." loading="lazy" /></p>
+<p><img src="../../images/PR_form.png" alt="The pull request form is shown titled &quot;Open a Pull Request&quot;, the user is busy filling out the title of the pull request. A button at the bottom reads create pull request." /></p>
 
 <hr />
 
 <h3 id="automated-tests-can-be-executed">Automated tests can be executed</h3>
 
-<p><img src="../../images/PR_list.png" alt="A screenshot of the training material on github, the pull request tab is highlighted. A number of pull requests appear below, some with green check marks, some with red crosses." loading="lazy" /></p>
+<p><img src="../../images/PR_list.png" alt="A screenshot of the training material on github, the pull request tab is highlighted. A number of pull requests appear below, some with green check marks, some with red crosses." /></p>
 
 <ul>
   <li>Green check mark = OK</li>
@@ -460,13 +464,13 @@ Switched to a new branch <span class="s1">'my_new_branch'</span>
   </li>
 </ul>
 
-<p><img src="../../images/PR_merged_branche.png" alt="line with dots on it representing commits is shown, the line is labelled main as before, but now the commits from my new branch appear directly on the main branch." loading="lazy" /></p>
+<p><img src="../../images/PR_merged_branche.png" alt="line with dots on it representing commits is shown, the line is labelled main as before, but now the commits from my new branch appear directly on the main branch." /></p>
 
 <hr />
 
 <h3 id="your-feature-is-now-in-the-original-code">Your feature is now in the original code</h3>
 
-<p><img src="../../images/PR_schema_06.png" alt="The same 3 repository cartoon as before, both the fork and local copy include my new branch, it looks like the author intended that upstream did too but it is missing from the graphic." loading="lazy" /></p>
+<p><img src="../../images/PR_schema_06.png" alt="The same 3 repository cartoon as before, both the fork and local copy include my new branch, it looks like the author intended that upstream did too but it is missing from the graphic." /></p>
 
 <hr />
 
@@ -487,7 +491,7 @@ Switched to a new branch <span class="s1">'my_new_branch'</span>
 
 <h3 id="summary">Summary</h3>
 
-<p><img src="../../images/PR_global_schema.png" alt="A final version of the three repository graphic is shown, fork and upstream are on github, the local copy is local. There are several arrows: 1 fork, creating fork from upstream; 2 clone, creating local from fork; 3 push, pushing my new branch to fork; 4 pull request, starting the process of getting my new branch into upstream." loading="lazy" /></p>
+<p><img src="../../images/PR_global_schema.png" alt="A final version of the three repository graphic is shown, fork and upstream are on github, the local copy is local. There are several arrows: 1 fork, creating fork from upstream; 2 clone, creating local from fork; 3 push, pushing my new branch to fork; 4 pull request, starting the process of getting my new branch into upstream." /></p>
 
 
 	<hr />
@@ -520,64 +524,59 @@ Switched to a new branch <span class="s1">'my_new_branch'</span>
 This material is the result of a collaborative work. Thanks to the <a href="https://training.galaxyproject.org" aria-label="Visit the GTN">Galaxy Training Network</a> and all the contributors!
 
 
-
-
-<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 100px;"/>
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" style="height: 100px;"/>
 
 
 This material is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 </section>
 
+
+
+
+
         </div>
-        
-            <footer>
-    <div class="container">
-        <br><br>
-        <p>
-            The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
-            provides researchers with online training materials, connects them with local trainers, and helps promoting open data analysis practices worldwide.
-        </p>
-        <p>
-The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
-</p>
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/57799a8c856c0806d6a93e66bdd3d7169ab79567">57799a8c856c0806d6a93e66bdd3d7169ab79567</a></p>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/ccccd1fb4d0598ecdaabad8b57a5835f5cd13dcf">ccccd1f</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/./topics/contributing/tutorials/github-command-line-contribution/slides.html" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
     </div>
 </footer>
 
-        
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1695112553'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,33 +8,80 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@ccccd1fb4d0598ecdaabad8b57a5835f5cd13dcf",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/mapping/slides-plain.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1695112553' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1695112553' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Mapping">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-09-19 08:35:56 +0000">
+<meta name="DC.creator" content="Joachim Wolff">
+<meta name="DC.creator" content="Saskia Hiltemann">
+<meta name="DC.creator" content="Engy Nasr">
+<meta name="DC.creator" content="Cristóbal Gallardo">
+<meta name="DC.creator" content="Erasmus+ Programme">
 
         
         
         
         
+        <meta name="description" content="Collection of tutorials developed and maintained by the w...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Mapping">
+        <meta property="og:description" content="Collection of tutorials developed and maintained by the w...">
         
-        <meta name="description" content="Collection of tutorials developed and maintained by the w..." />
-        <meta property="og:title" content="Galaxy Training: Mapping" />
-        <meta property="og:description" content="Collection of tutorials developed and maintained by the w..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1695112553'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,38 +98,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/mapping/slides-plain.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/mapping/slides-plain.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/mapping/slides-plain.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/mapping/slides-plain.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/mapping/slides-plain.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/sequence-analysis/tutorials/mapping/slides-plain.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -118,8 +137,7 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/sequence-analysis/tutorials/mapping/slides-plain.md" title="Edit on GitHub">
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/./topics/sequence-analysis/tutorials/mapping/slides.html" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
 
@@ -131,6 +149,7 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
             <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
                 <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
@@ -143,27 +162,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -173,16 +179,15 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-12-01/topics/sequence-analysis/tutorials/mapping/slides-plain.html" title="Version 2021-12-01">2021-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-12-01/topics/sequence-analysis/tutorials/mapping/slides-plain.html">2021-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-11-01/topics/sequence-analysis/tutorials/mapping/slides-plain.html" title="Version 2021-11-01">2021-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-11-01/topics/sequence-analysis/tutorials/mapping/slides-plain.html">2021-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-10-01/topics/sequence-analysis/tutorials/mapping/slides-plain.html" title="Version 2021-10-01">2021-10-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-10-01/topics/sequence-analysis/tutorials/mapping/slides-plain.html">2021-10-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -195,7 +200,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -209,23 +214,19 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         <section class="tutorial">
 	<a href="https://github.com/galaxyproject/training-material/blob/main//topics/sequence-analysis/tutorials/mapping/slides.html">View markdown source on GitHub</a>
 	<h1>Mapping</h1>
 		<h2>Contributors</h2>
-		
-<a href="/training-material/hall-of-fame/joachimwolff/" class="contributor-badge contributor-joachimwolff"><img src="https://avatars.githubusercontent.com/joachimwolff?s=27" alt="Avatar">Joachim Wolff</a>
+<div markdown="0">
 
- 
-<a href="/training-material/hall-of-fame/shiltemann/" class="contributor-badge contributor-shiltemann"><img src="https://avatars.githubusercontent.com/shiltemann?s=27" alt="Avatar">Saskia Hiltemann</a>
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/joachimwolff/" class="contributor-badge contributor-joachimwolff"><img src="https://avatars.githubusercontent.com/joachimwolff?s=36" alt="Avatar" width="36" height="36">Joachim Wolff</a><a href="/training-material/hall-of-fame/shiltemann/" class="contributor-badge contributor-shiltemann"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/shiltemann?s=36" alt="Avatar" width="36" height="36">Saskia Hiltemann</a><a href="/training-material/hall-of-fame/EngyNasr/" class="contributor-badge contributor-EngyNasr"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/EngyNasr?s=36" alt="Avatar" width="36" height="36">Engy Nasr</a><a href="/training-material/hall-of-fame/gallardoalba/" class="contributor-badge contributor-gallardoalba"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/gallardoalba?s=36" alt="Avatar" width="36" height="36">Cristóbal Gallardo</a><a href="/training-material/hall-of-fame/erasmusplus/" class="contributor-badge contributor-erasmusplus"><img src="https://www.erasmusplus.nl/assets/images/logo.png" alt="Avatar" width="36" height="36">Erasmus+ Programme</a>
+	</div>
 
- 
-<a href="/training-material/hall-of-fame/EngyNasr/" class="contributor-badge contributor-EngyNasr"><img src="https://avatars.githubusercontent.com/EngyNasr?s=27" alt="Avatar">Engy Nasr</a>
-
- 
-<a href="/training-material/hall-of-fame/gallardoalba/" class="contributor-badge contributor-gallardoalba"><img src="https://avatars.githubusercontent.com/gallardoalba?s=27" alt="Avatar">Cristóbal Gallardo</a>
-
+</div>
 
 
 		
@@ -262,14 +263,14 @@
 
 		
 
-		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Dec 1, 2021 </div>
+		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Sep 19, 2023 </div>
 
 	<hr />
 
 
 	<h1 id="example-ngs-pipeline">Example NGS pipeline</h1>
 
-<p><img src="../../images/mapping/variant_calling_workflow.png" alt="High level view of a typical NGS workflow. " loading="lazy" /></p>
+<p><img src="../../images/mapping/variant_calling_workflow.png" alt="High level view of a typical NGS workflow" /></p>
 
 <p>A high level view of a typical NGS bioinformatics workflow</p>
 
@@ -295,7 +296,7 @@
 <h1 id="what-is-mapping">What is mapping?</h1>
 
 <p>.pull-left[
-<img src="../../images/mapping/mapping_assembly.png" alt="Mapping vs assembly. " loading="lazy" />
+<img src="../../images/mapping/mapping_assembly.png" alt="Mapping vs assembly" />
 ]</p>
 
 <p>.pull-right[</p>
@@ -374,7 +375,7 @@ up pretty well..</p>
 <ul>
   <li>
     <p>Read could align to multiple places
-.center[.image-50[<img src="../../images/mapping/multimap.png" alt="Illustration of multi-mapped read. " loading="lazy" />]]</p>
+.center[.image-50[<img src="../../images/mapping/multimap.png" alt="Illustration of multi-mapped read" />]]</p>
   </li>
   <li>How to handle multi-mapped reads? Depends on tool:
     <ul>
@@ -417,7 +418,7 @@ up pretty well..</p>
 </ul>
 
 <p>.center[
-.image-25[<img src="../../images/mapping/scoring_example.png" alt="Screenshot of a sequence scoring game where two sequences are being aligned across the top (GGCTGG and GAGG) and the per-base and cumulative scores from left to right." loading="lazy" />]</p>
+.image-25[<img src="../../images/mapping/scoring_example.png" alt="Screenshot of a sequence scoring game where two sequences are being aligned across the top (GGCTGG and GAGG) and the per-base and cumulative scores from left to right." />]</p>
 
 <p><strong>Example</strong> (with affine gap penalty)
 ]</p>
@@ -452,8 +453,8 @@ up pretty well..</p>
 </ul>
 
 <p>.center[
-.image-50[ <img src="../../images/mapping/ti_tv.png" alt="Transitions vs transversions. " loading="lazy" /> ]
-.image-25[ <img src="../../images/mapping/ti_tv_scoring.png" alt="Example scoring matrix. " loading="lazy" /> ]
+.image-50[ <img src="../../images/mapping/ti_tv.png" alt="Transitions vs transversions" /> ]
+.image-25[ <img src="../../images/mapping/ti_tv_scoring.png" alt="Example scoring matrix" /> ]
 ]</p>
 
 <ul>
@@ -475,7 +476,7 @@ Many more complexities may be considered, different tools make different choices
 
 <p><strong>Transversions</strong> are interchanges of purine for pyrimidine bases, which therefore involve exchange of one-ring and two-ring structures.</p>
 
-<p><img src="../../images/mapping/transition_transversion.gif" alt="Transitions and transversions. " loading="lazy" /></p>
+<p><img src="../../images/mapping/transition_transversion.gif" alt="Transitions and transversions" /></p>
 
 <hr />
 
@@ -777,7 +778,7 @@ ins TCTCT
   </li>
 </ul>
 
-<p>.image-75[<img src="../../images/mapping/alignment.gif" alt="Recording of alignment game. " loading="lazy" />]</p>
+<p>.image-75[<img src="../../images/mapping/alignment.gif" alt="Recording of alignment game" />]</p>
 
 <p>.footnote[https://tinyurl.com/sequence-alignment]</p>
 
@@ -794,12 +795,12 @@ Can have learners play around with this alignment game now</p>
   <li>
     <p><strong>Sequencing:</strong> Cut longer fragments of DNA, sequence only the ends</p>
 
-    <p>.center[.image-90[<img src="../../images/mapping/pairedend_read.png" alt="Paired-end reads. " loading="lazy" />]]</p>
+    <p>.center[.image-90[<img src="../../images/mapping/pairedend_read.png" alt="Paired-end reads" />]]</p>
   </li>
   <li>
     <p><strong>Mapping:</strong> known distance between reads improves accuracy</p>
 
-    <p>.center[.image-75[<img src="../../images/mapping/pairedend_mapping.png" alt="Mapping of paired-end reads. " loading="lazy" />]]</p>
+    <p>.center[.image-75[<img src="../../images/mapping/pairedend_mapping.png" alt="Mapping of paired-end reads" />]]</p>
   </li>
 </ul>
 
@@ -827,7 +828,7 @@ the ends.</li>
   <li>
     <p><strong>Single-end:</strong></p>
 
-    <p><img src="../../images/mapping/repeats_se.png" alt="Cartoon with a reference genome and two repeats marked. Two blue boxes representing a single-ended read map equally well to both repeats." loading="lazy" /></p>
+    <p><img src="../../images/mapping/repeats_se.png" alt="Cartoon with a reference genome and two repeats marked. Two blue boxes representing a single-ended read map equally well to both repeats." /></p>
   </li>
 </ul>
 
@@ -841,7 +842,7 @@ for unique mapping..</p>
   <li>
     <p><strong>Paired-end:</strong></p>
 
-    <p><img src="../../images/mapping/repeats_pe.png" alt="Cartoon with a reference genome and two repeats marked. Now the two blue boxes are linked and one of them is red, representing a forward/reverse pair of a paired-end read. The mapping is no longer ambiguous and you can know which repeat the blue box belongs to, as the red box maps upstream." loading="lazy" /></p>
+    <p><img src="../../images/mapping/repeats_pe.png" alt="Cartoon with a reference genome and two repeats marked. Now the two blue boxes are linked and one of them is red, representing a forward/reverse pair of a paired-end read. The mapping is no longer ambiguous and you can know which repeat the blue box belongs to, as the red box maps upstream." /></p>
   </li>
 </ul>
 
@@ -861,7 +862,7 @@ paired-end protocol (distance to mate), this can now be resolved..</p>
   <li>
     <p><strong>Deletions:</strong> Longer mapping distance than expected</p>
 
-    <p>.image-75[<img src="../../images/mapping/pairedend_deletion.png" alt="Deletion between two paired reads. " loading="lazy" />]</p>
+    <p>.image-75[<img src="../../images/mapping/pairedend_deletion.png" alt="Deletion between two paired reads" />]</p>
   </li>
 </ul>
 
@@ -871,7 +872,7 @@ paired-end protocol (distance to mate), this can now be resolved..</p>
   <li>
     <p><strong>Insertions:</strong> Shorter mapping distance than expected</p>
 
-    <p>.image-75[<img src="../../images/mapping/pairedend_insertion.png" alt="Insertions beteween two paired reads. " loading="lazy" />]</p>
+    <p>.image-75[<img src="../../images/mapping/pairedend_insertion.png" alt="Insertions beteween two paired reads" />]</p>
   </li>
 </ul>
 
@@ -915,7 +916,7 @@ paired-end protocol (distance to mate), this can now be resolved..</p>
       <li><strong>Reverse</strong> reads (usually <strong><code class="language-plaintext highlighter-rouge">_2</code></strong> or <strong><code class="language-plaintext highlighter-rouge">_R2</code></strong> in file name)</li>
     </ul>
 
-    <p><img src="../../images/mapping/pairedend_fastq.png" alt="Paired-end reads as two separate FASTQ files. " loading="lazy" /></p>
+    <p><img src="../../images/mapping/pairedend_fastq.png" alt="Paired-end reads as two separate FASTQ files" /></p>
   </li>
 </ul>
 
@@ -1226,7 +1227,7 @@ By cutting the yellow read only from the forward reads file, but leaving the oth
 </ul>
 
 <p>.center[
-.image-40[<img src="../../images/mapping/spliced_mapper.png" alt="Mapping RNA. " loading="lazy" />]
+.image-40[<img src="../../images/mapping/spliced_mapper.png" alt="Mapping RNA" />]
 ]
 .footnote[<strong>Figure:</strong> mapping of RNA-seq reads is different than DNA-seq]</p>
 
@@ -1282,7 +1283,7 @@ provides the best results.”</em> - Hatem et al BMC Bioinformatics 2013, 14:184
 
 <h2 id="mapping-tools">Mapping tools</h2>
 
-<p><img src="../../images/mapping/ngs_read_mappers_timeline.jpeg" alt="Timeline of mapping tools. " loading="lazy" /></p>
+<p><img src="../../images/mapping/ngs_read_mappers_timeline.jpeg" alt="Timeline of mapping tools" /></p>
 
 <p>.footnote[60+ different mappers, many comparison papers. Figure from <a href="https://doi.org/10.1093/bioinformatics/bts605">10.1093/bioinformatics/bts605</a> ]</p>
 
@@ -1309,12 +1310,12 @@ provides the best results.”</em> - Hatem et al BMC Bioinformatics 2013, 14:184
     <tr>
       <td>HISAT2</td>
       <td>DNA/RNA</td>
-      <td>Short reads. Based on [GCSA](https://www.nature.com/articles/s41587-019-0201-4. <a href="https://www.nature.com/articles/s41587-019-0201-4">Reference</a>. <a href="https://www.nature.com/articles/s41587-019-0201-4">Reference</a>.</td>
+      <td>Short reads. Based on <a href="https://doi.org/10.1109/TCBB.2013.2297101">GCSA</a>. <a href="https://www.nature.com/articles/s41587-019-0201-4">Reference</a>.</td>
     </tr>
     <tr>
       <td>RNASTAR</td>
       <td>RNA</td>
-      <td>Short reads. Extremely fast. High sensitive and accuracy. Based on <a href="https://pubs.acs.org/doi/10.1021/ci900450m">MMPs</a>. <a href="https://pubmed.ncbi.nlm.nih.gov/23104886/">Reference</a>.</td>
+      <td>Short reads. Extremely fast. High sensitive and accuracy. Based on Maximal Mappable Prefixes (MMPs). <a href="https://pubmed.ncbi.nlm.nih.gov/23104886/">Reference</a>.</td>
     </tr>
     <tr>
       <td>BWA-MEM2</td>
@@ -1324,12 +1325,12 @@ provides the best results.”</em> - Hatem et al BMC Bioinformatics 2013, 14:184
     <tr>
       <td>Minimap2</td>
       <td>DNA/RNA</td>
-      <td>Long reads (PacBio and ONT).  Extremely fast. Based on <a href="https://link.springer.com/chapter/10.1007/978-3-662-44753-6_5">DALINGNER</a> and <a href="https://www.nature.com/articles/nbt.3238">MHAP</a>. <a href="https://www.nature.com/articles/nbt.3238">Reference</a>.</td>
+      <td>Long reads (PacBio and ONT).  Extremely fast. Based on <a href="https://link.springer.com/chapter/10.1007/978-3-662-44753-6_5">DALIGN</a> and <a href="https://www.nature.com/articles/nbt.3238">MHAP</a>. <a href="https://doi.org/10.1093/bioinformatics/bty191">Reference</a>.</td>
     </tr>
     <tr>
       <td>Bismark</td>
       <td>DNA/RNA</td>
-      <td>Short reads. Bisulfite treated sequencing. Based on <a href="https://www.nature.com/articles/s41587-019-0201-4">GCSA</a>. <a href="https://pubmed.ncbi.nlm.nih.gov/21493656/">Reference</a>.</td>
+      <td>Short reads. Bisulfite treated sequencing. Based on <a href="https://doi.org/10.1109/TCBB.2013.2297101">GCSA</a>. <a href="https://pubmed.ncbi.nlm.nih.gov/21493656/">Reference</a>.</td>
     </tr>
     <tr>
       <td>BBMap</td>
@@ -1357,7 +1358,7 @@ provides the best results.”</em> - Hatem et al BMC Bioinformatics 2013, 14:184
 
 <h1 id="sambam-file-format">SAM/BAM file format</h1>
 
-<figure id="figure-1"><img src="../../images/bam_file.png" alt="Example of SAM file format. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 1:</span> SAM/BAM file</figcaption></figure>
+<p><img src="../../images/bam_file.png" alt="Example of SAM file format" title="SAM/BAM file" /></p>
 
 <p><strong>SAM:</strong> <strong>S</strong>equence <strong>A</strong>lignment <strong>M</strong>ap</p>
 
@@ -1367,7 +1368,7 @@ provides the best results.”</em> - Hatem et al BMC Bioinformatics 2013, 14:184
 
 <h1 id="sambam-file-format-1">SAM/BAM file format</h1>
 
-<figure id="figure-2"><img src="../../images/bam_file_explained.png" alt="More detailed view of SAM format. " loading="lazy" /><figcaption><span class="figcaption-prefix">Figure 2:</span> SAM/BAM file detail</figcaption></figure>
+<p><img src="../../images/bam_file_explained.png" alt="More detailed view of SAM format" title="SAM/BAM file detail" /></p>
 
 <ul>
   <li>Original read information (from FASTQ) plus mapping information
@@ -1393,7 +1394,7 @@ Alignment given in CIGAR string.</p>
   <li>Visualise aligned reads (BAM files)</li>
 </ul>
 
-<p><img src="../../images/mapping/igv_animation.gif" alt="IGV Genome Browser. " loading="lazy" /></p>
+<p><img src="../../images/mapping/igv_animation.gif" alt="IGV Genome Browser" /></p>
 
 <p>.footnote[This is <a href="https://software.broadinstitute.org/software/igv/">IGV (Integrative Genome Browser)</a> DOI: <a href="https://doi.org/10.1038/nbt.1754">10.1038/nbt.1754</a>]</p>
 
@@ -1413,7 +1414,7 @@ Alignment given in CIGAR string.</p>
   <li><a href="https://jbrowse.org/">JBrowse</a> <i class="fas fa-wrench" aria-hidden="true"></i><span class="visually-hidden">tool</span> Genome Browser as Galaxy tool</li>
 </ul>
 
-<p>.image-90[<img src="../../images/mapping/jbrowse.png" alt="Screenshot of JBrowse in the Galaxy Interface showing transcripts, various box plots, heatmaps, sequencing depth and variation plots." loading="lazy" />]</p>
+<p>.image-90[<img src="../../images/mapping/jbrowse.png" alt="Screenshot of JBrowse in the Galaxy Interface showing transcripts, various box plots, heatmaps, sequencing depth and variation plots." />]</p>
 
 <p>.footnote[<a href="https://jbrowse.org">JBrowse.org</a> DOI: <a href="https://doi.org/10.1186/s13059-016-0924-1">10.1186/s13059-016-0924-1</a>]</p>
 
@@ -1433,7 +1434,7 @@ Alignment given in CIGAR string.</p>
       <li><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks">UCSC Genome Browser</a>, <a href="https://www.ensembl.org">Ensemble</a>, <a href="https://software.broadinstitute.org/software/igv/">IGV</a>, <a href="https://bioviz.org/">IGB</a>, <a href="https://bam.iobio.io/home">BAM.iobo</a></li>
     </ul>
 
-    <p><img src="../../images/mapping/igv_link.png" alt="Display application links in Galaxy. " loading="lazy" /></p>
+    <p><img src="../../images/mapping/igv_link.png" alt="Display application links in Galaxy" /></p>
   </li>
   <li>Two different links for <strong>IGV</strong>
     <ul>
@@ -1488,64 +1489,59 @@ In the mapping hands-on tutorial you will use JBrowse and IGV</p>
 This material is the result of a collaborative work. Thanks to the <a href="https://training.galaxyproject.org" aria-label="Visit the GTN">Galaxy Training Network</a> and all the contributors!
 
 
-
-
-<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 100px;"/>
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" style="height: 100px;"/>
 
 
 This material is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 </section>
 
+
+
+
+
         </div>
-        
-            <footer>
-    <div class="container">
-        <br><br>
-        <p>
-            The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
-            provides researchers with online training materials, connects them with local trainers, and helps promoting open data analysis practices worldwide.
-        </p>
-        <p>
-The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
-</p>
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/57799a8c856c0806d6a93e66bdd3d7169ab79567">57799a8c856c0806d6a93e66bdd3d7169ab79567</a></p>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/ccccd1fb4d0598ecdaabad8b57a5835f5cd13dcf">ccccd1f</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/./topics/sequence-analysis/tutorials/mapping/slides.html" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
     </div>
 </footer>
 
-        
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1695112553'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>

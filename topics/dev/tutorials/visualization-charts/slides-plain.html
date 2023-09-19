@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -8,33 +8,80 @@
         
             <script async defer data-domain="training.galaxyproject.org" src="https://plausible.galaxyproject.eu/js/plausible.js"></script>
 
+<!-- JavaScript Error Monitoring, and performance tracking. -->
+<script
+  src="https://browser.sentry-cdn.com/7.52.1/bundle.tracing.min.js"
+  integrity="sha384-muuFXKS3752PNA4rPm9Uq6BLvOfV4CXyr9MHDBPvozOJJUWLKkogEFWOIRoVps43"
+  crossorigin="anonymous"
+></script>
+<script type="text/javascript">
+Sentry.init({
+  dsn: "https://45e0ec6e4373462b92969505df37cf40@sentry.galaxyproject.org/10",
+  release: "galaxy-training-network@ccccd1fb4d0598ecdaabad8b57a5835f5cd13dcf",
+  integrations: [new Sentry.BrowserTracing(), new Sentry.Replay()],
+  sampleRate: 0.1,
+  tracesSampleRate: 0.1,
+  // Capture Replay for no sessions by default
+  replaysSessionSampleRate: 0.01,
+  // plus for 1% of sessions with an error
+  replaysOnErrorSampleRate: 0.01,
+  // PII OFF
+  sendDefaultPii: false, // Off by default but just in case.
+  environment: "production",
+});
+</script>
+
         
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap.min.css?v=3">
-        <link rel="stylesheet" href="/training-material/assets/css/bootstrap-toc.min.css">
-        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=2">
-        <script src="https://kit.fontawesome.com/67b3f98409.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="/training-material/assets/css/academicons.css">
-        <link rel="stylesheet" href="/training-material/assets/css/syntax_highlighting.css">
-        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon" />
-        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml" />
+        <link rel="shortcut icon" href="/training-material/favicon.ico" type="image/x-icon">
+        <link rel="alternate" type="application/atom+xml" href="/training-material/feed.xml">
+        <link rel="canonical" href="https://training.galaxyproject.org/training-material/topics/dev/tutorials/visualization-charts/slides-plain.html">
+        <link rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Regular-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Bold-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/training-material/assets/fonts/AtkinsonHyperlegible/Atkinson-Hyperlegible-Italic-102a.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" as="script" crossorigin>
+        <link rel="preload" href="/training-material/assets/css/main.css?v=3" as="style">
+        <link rel='preload' href='/training-material/assets/js/bundle.theme.js?v=1695112553' as='script'>
+<link rel='preload' href='/training-material/assets/js/bundle.main.js?v=1695112553' as='script'>
+        <link rel="stylesheet" href="/training-material/assets/css/main.css?v=3">
+        <link rel="manifest" href="/training-material/manifest.json">
+        <meta name="theme-color" content="#2c3143"/>
+
+
+        <meta name="DC.identifier" content="https://github.com/galaxyproject/training-material">
+<meta name="DC.type" content="text">
+<meta name="DC.title" content="Visualizations: JavaScript Plugins">
+<meta name="DC.publisher" content="Galaxy Training Network">
+<meta name="DC.date" content="2023-09-19 08:35:54 +0000">
+<meta name="DC.creator" content="Saskia Hiltemann">
+<meta name="DC.creator" content="Youri Hoogstrate">
+<meta name="DC.creator" content="Björn Grüning">
+<meta name="DC.creator" content="Aysam Guerler">
+<meta name="DC.creator" content="Dannon Baker">
 
         
         
         
         
+        <meta name="description" content="Collection of tutorials developed and maintained by the w...">
+        <meta property="og:site_name" content="Galaxy Training Network">
+        <meta property="og:title" content="Galaxy Training: Visualizations: JavaScript Plugins">
+        <meta property="og:description" content="Collection of tutorials developed and maintained by the w...">
         
-        <meta name="description" content="Collection of tutorials developed and maintained by the w..." />
-        <meta property="og:title" content="Galaxy Training: Visualizations: JavaScript Plugins" />
-        <meta property="og:description" content="Collection of tutorials developed and maintained by the w..." />
-        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png" />
+        <meta property="og:image" content="/training-material/assets/images/GTNLogo1000.png">
+
+        
     </head>
     <body data-spy="scroll" data-target="#toc">
+        <script src='/training-material/assets/js/bundle.theme.js?v=1695112553'></script>
         <header>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Site Navigation">
         <div class="container">
             <a class="navbar-brand" href="/training-material/">
                 <img src="/training-material/assets/images/GTN-60px.png" height="30" alt="Galaxy Training Network logo">
-                Galaxy Training!
+                
+                    Galaxy Training!
+                
             </a>
 
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,38 +98,10 @@
                         
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Languages">
-                            <i class="fas fa-language" aria-hidden="true"></i><span class="visually-hidden">language</span> Languages
+                    <li class="nav-item">
+                        <a class="nav-link" href="/training-material/learning-pathways" title="Learning Pathways">
+                           <i class="fas fa-graduation-cap" aria-hidden="true"></i><span class="visually-hidden">curriculum</span> Learning Pathways
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            
-                              <strong class="dropdown-header">Automatic Translations</strong>
-            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=fr&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/visualization-charts/slides-plain.html&edit-text=&act=url">
-                            Français
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ja&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/visualization-charts/slides-plain.html&edit-text=&act=url">
-                            日本語
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=es&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/visualization-charts/slides-plain.html&edit-text=&act=url">
-                            Español
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=pt&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/visualization-charts/slides-plain.html&edit-text=&act=url">
-                            Português
-                            </a>
-                            
-            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=ar&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/visualization-charts/slides-plain.html&edit-text=&act=url">
-                            العربية
-                            </a>
-                            
-                            <a class="dropdown-item" href="https://translate.google.com/translate?hl=jp&sl=en&tl=&u=https%3A%2F%2Ftraining.galaxyproject.org/topics/dev/tutorials/visualization-charts/slides-plain.html&edit-text=&act=url" title="">
-                            And more!
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -118,8 +137,7 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right">
 
-        
-        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/topics/dev/tutorials/visualization-charts/slides-plain.md" title="Edit on GitHub">
+        <a class="dropdown-item" href="https://github.com/galaxyproject/training-material/edit/main/./topics/dev/tutorials/visualization-charts/slides.html" title="Edit on GitHub">
           <i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
         </a>
 
@@ -131,6 +149,7 @@
             <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> Page Metrics
         </a>
 
+        <!-- link to feedback -->
         
             <a class="dropdown-item" href="/training-material/feedback.html" title="Show feedback statistics about this repository">
                 <i class="fas fa-chart-bar" aria-hidden="true"></i><span class="visually-hidden">galaxy-barchart</span> GTN feedback
@@ -143,27 +162,14 @@
             </div>
 
             <div id="theme-selector" data-toggle="buttons">
-                <label data-value="default" class="btn btn-secondary">
-                    <input type="radio" name="options" id="default" autocomplete="off"> Default
-                </label>
-                <label data-value="night" class="btn btn-secondary">
-                    <input type="radio" name="options" id="night" autocomplete="off"> Night
-                </label>
-                <label data-value="midnight" class="btn btn-secondary">
-                    <input type="radio" name="options" id="midnight" autocomplete="off"> Midnight
-                </label>
-                <label data-value="rainbow" class="btn btn-secondary">
-                    <input type="radio" name="options" id="rainbow" autocomplete="off"> Rainbow
-                </label>
-                <label data-value="progress" class="btn btn-secondary">
-                    <input type="radio" name="options" id="progress" autocomplete="off">🏳️‍🌈
-                </label>
-                <label data-value="halloween" class="btn btn-secondary">
-                    <input type="radio" name="options" id="halloween" autocomplete="off"> 🎃
-                </label>
-                <label data-value="straya" class="btn btn-secondary">
-                    <input type="radio" name="options" id="downunder" autocomplete="off"> 🇦🇺
-                </label>
+                    <button class="btn" data-theme="default">Default</button>
+                    <button class="btn" data-theme="night">Night</button>
+                    <button class="btn" data-theme="midnight">Midnight</button>
+                    <button class="btn" data-theme="rainbow">Rainbow</button>
+                    <button class="btn" data-theme="blm">✊🏿</button>
+                    <button class="btn" data-theme="progress" >🏳️‍🌈</button>
+                    <button class="btn" data-theme="halloween">🎃</button>
+                    <button class="btn" data-theme="straya">🇦🇺</button>
             </div>
 
         </div>
@@ -173,16 +179,15 @@
                 <i class="fas fa-history" aria-hidden="true"></i><span class="visually-hidden">galaxy-rulebuilder-history</span> Previous Versions
             </div>
 
-            
             <div id="archive-selector">
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-12-01/topics/dev/tutorials/visualization-charts/slides-plain.html" title="Version 2021-12-01">2021-12-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-12-01/topics/dev/tutorials/visualization-charts/slides-plain.html">2021-12-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-11-01/topics/dev/tutorials/visualization-charts/slides-plain.html" title="Version 2021-11-01">2021-11-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-11-01/topics/dev/tutorials/visualization-charts/slides-plain.html">2021-11-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-10-01/topics/dev/tutorials/visualization-charts/slides-plain.html" title="Version 2021-10-01">2021-10-01</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/2021-10-01/topics/dev/tutorials/visualization-charts/slides-plain.html">2021-10-01</a>
             
-                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/" title="Older Versions">Older Versions</a>
+                <a class="btn btn-warning" href="https://training.galaxyproject.org/archive/">Older Versions</a>
             </div>
 
         </div>
@@ -195,7 +200,7 @@
                     <li class="nav-item">
                       <div id="navbarSupportedContent" role="search">
                         <!-- Search form -->
-                        <form class="form-inline mr-auto" method="GET" action="/training-material/search">
+                        <form class="form-inline mr-auto" method="GET" action="/training-material/search2">
                           <i class="fas fa-search nav-link" aria-hidden="true"></i>
                           <div class="md-form mb-2">
                             <input name="query" class="form-control nicer" type="text" placeholder="Search Tutorials" aria-label="Search">
@@ -209,26 +214,19 @@
     </nav>
 </header>
 
+        
         <div class="container main-content" role="main">
         <section class="tutorial">
 	<a href="https://github.com/galaxyproject/training-material/blob/main//topics/dev/tutorials/visualization-charts/slides.html">View markdown source on GitHub</a>
 	<h1>Visualizations: JavaScript Plugins</h1>
 		<h2>Contributors</h2>
-		
-<a href="/training-material/hall-of-fame/shiltemann/" class="contributor-badge contributor-shiltemann"><img src="https://avatars.githubusercontent.com/shiltemann?s=27" alt="Avatar">Saskia Hiltemann</a>
+<div markdown="0">
 
- 
-<a href="/training-material/hall-of-fame/yhoogstrate/" class="contributor-badge contributor-yhoogstrate"><img src="https://avatars.githubusercontent.com/yhoogstrate?s=27" alt="Avatar">Youri Hoogstrate</a>
+	<div class="contributors-line">
+		Authors: <a href="/training-material/hall-of-fame/shiltemann/" class="contributor-badge contributor-shiltemann"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/shiltemann?s=36" alt="Avatar" width="36" height="36">Saskia Hiltemann</a><a href="/training-material/hall-of-fame/yhoogstrate/" class="contributor-badge contributor-yhoogstrate"><img src="https://avatars.githubusercontent.com/yhoogstrate?s=36" alt="Avatar" width="36" height="36">Youri Hoogstrate</a><a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="/training-material/assets/images/orcid.png" alt="orcid logo" width="36" height="36"/><img src="https://avatars.githubusercontent.com/bgruening?s=36" alt="Avatar" width="36" height="36">Björn Grüning</a><a href="/training-material/hall-of-fame/guerler/" class="contributor-badge contributor-guerler"><img src="https://avatars.githubusercontent.com/guerler?s=36" alt="Avatar" width="36" height="36">Aysam Guerler</a><a href="/training-material/hall-of-fame/dannon/" class="contributor-badge contributor-dannon"><img src="https://avatars.githubusercontent.com/dannon?s=36" alt="Avatar" width="36" height="36">Dannon Baker</a>
+	</div>
 
- 
-<a href="/training-material/hall-of-fame/bgruening/" class="contributor-badge contributor-bgruening"><img src="https://avatars.githubusercontent.com/bgruening?s=27" alt="Avatar">Björn Grüning</a>
-
- 
-<a href="/training-material/hall-of-fame/guerler/" class="contributor-badge contributor-guerler"><img src="https://avatars.githubusercontent.com/guerler?s=27" alt="Avatar">Aysam Guerler</a>
-
- 
-<a href="/training-material/hall-of-fame/dannon/" class="contributor-badge contributor-dannon"><img src="https://avatars.githubusercontent.com/dannon?s=27" alt="Avatar">Dannon Baker</a>
-
+</div>
 
 
 		
@@ -253,7 +251,7 @@
 
 		
 
-		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Jul 9, 2021 </div>
+		<div><strong> <i class="far fa-calendar" aria-hidden="true"></i><span class="visually-hidden">last_modification</span> Last modification:</strong> Sep 19, 2023 </div>
 
 	<hr />
 
@@ -283,7 +281,7 @@
 
 <h2 id="why-visualizations">Why visualizations?</h2>
 
-<p><img src="../../images/anscombe-quartet-animated.gif" alt="Animated gif cycling through Anscombe's quartet and various variations that all have the same mean, SD, and correlation but look vastly different to someone's eyes." loading="lazy" /></p>
+<p><img src="../../images/anscombe-quartet-animated.gif" alt="Animated gif cycling through Anscombe's quartet and various variations that all have the same mean, SD, and correlation but look vastly different to someone's eyes." /></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X</span> <span class="n">mean</span><span class="p">:</span> <span class="mf">54.26</span><span class="p">,</span> <span class="n">X</span> <span class="n">SD</span><span class="p">:</span> <span class="mf">16.76</span>
 <span class="n">Y</span> <span class="n">mean</span><span class="p">:</span> <span class="mf">47.83</span><span class="p">,</span> <span class="n">Y</span> <span class="n">SD</span><span class="p">:</span> <span class="mf">26.93</span>
@@ -331,7 +329,7 @@ yet when visualizing them it is revealed they have vastly different structures.<
 
 <h2 id="which-should-i-use">Which should I use?</h2>
 
-<p><img src="../../images/which_viz_flowchart.png" alt="Flowchart. Only available on an external website? If yes use a display application. Does it need to be served (e.g. python), if yes use an interactive tool. Is it computationally intensive, then it needs to be a regular tool. Is it written in javascript? Then it shold be a generic plugin. If it passes all these tests it can be a charts plugin." loading="lazy" /></p>
+<p><img src="../../images/which_viz_flowchart.png" alt="Flowchart. Only available on an external website? If yes use a display application. Does it need to be served (e.g. python), if yes use an interactive tool. Is it computationally intensive, then it needs to be a regular tool. Is it written in javascript? Then it shold be a generic plugin. If it passes all these tests it can be a charts plugin." /></p>
 
 <hr />
 
@@ -343,7 +341,7 @@ yet when visualizing them it is revealed they have vastly different structures.<
 <p>A shared interface for a wide range of pure JavaScript visualization types i.e.
 bar diagrams, pie charts, scatter plots, heat maps and others.</p>
 
-<p><img src="../../images/charts_examples.png" alt="Montage of several charts, bar, dot, stacked bar/line, box and whisker, and doughnut charts." loading="lazy" /></p>
+<p><img src="../../images/charts_examples.png" alt="Montage of several charts, bar, dot, stacked bar/line, box and whisker, and doughnut charts." /></p>
 
 <p>Reference: <a href="https://www.nvd3.org">https://www.nvd3.org </a>, <a href="https://www.jqplot.com">https://www.jqplot.com </a></p>
 
@@ -351,13 +349,13 @@ bar diagrams, pie charts, scatter plots, heat maps and others.</p>
 
 <h2 id="chart-configuration---bar-chart-example">Chart Configuration - Bar chart example</h2>
 
-<p><img src="../../images/charts_bar_config.png" alt="A tool form with bar chart options shown on left and right." loading="lazy" /></p>
+<p><img src="../../images/charts_bar_config.png" alt="A tool form with bar chart options shown on left and right." /></p>
 
 <hr />
 
 <p>If a plugin is unavailable, custom visualization types like this heat map here can be added.</p>
 
-<p><img src="../../images/charts_heatmap.png" alt="A large zoomed out heatmap is shown with an inset highlighting a small portion." loading="lazy" /></p>
+<p><img src="../../images/charts_heatmap.png" alt="A large zoomed out heatmap is shown with an inset highlighting a small portion." /></p>
 
 <p>Charts is able to pre-process large-scale data behind the scenes.</p>
 
@@ -367,23 +365,23 @@ bar diagrams, pie charts, scatter plots, heat maps and others.</p>
 
 <h2 id="charts---pdb-viewer-example">Charts - PDB viewer example</h2>
 
-<p><img src="../../images/charts_pdbviewer.png" alt="Configuration for the protein viewer is shown on the left, a 3d structure of a protein shown on the right. " loading="lazy" /></p>
+<p><img src="../../images/charts_pdbviewer.png" alt="Configuration for the protein viewer is shown on the left, a 3d structure of a protein shown on the right" /></p>
 
 <hr />
 
-<p><img src="../../images/charts_examples2.png" alt="Examples of 6 different visualisations in galaxy features an MSA, a couple graphs, RNA structure, and 3d visualisations of proteins. " loading="lazy" /></p>
+<p><img src="../../images/charts_examples2.png" alt="Examples of 6 different visualisations in galaxy features an MSA, a couple graphs, RNA structure, and 3d visualisations of proteins" /></p>
 
 <hr />
 
 <h2 id="community-driven-plugins">Community-driven plugins</h2>
 
-<p><img src="../../images/charts_community.png" alt="Montage of several logos include D3, jqPlot, BioJS, Cytoscape, and NVD3." loading="lazy" /></p>
+<p><img src="../../images/charts_community.png" alt="Montage of several logos include D3, jqPlot, BioJS, Cytoscape, and NVD3." /></p>
 
 <hr />
 
 <h2 id="video-example">Video Example</h2>
 
-<p><a href="https://vimeo.com/222709200"><img src="../../images/charts_video.png" alt="Video demonstrating several viz plugins." loading="lazy" /></a></p>
+<p><a href="https://vimeo.com/222709200"><img src="../../images/charts_video.png" alt="Video demonstrating several viz plugins." /></a></p>
 
 <p><span>Speaker Notes</span>
 click the image to run the video</p>
@@ -413,64 +411,59 @@ click the image to run the video</p>
 This material is the result of a collaborative work. Thanks to the <a href="https://training.galaxyproject.org" aria-label="Visit the GTN">Galaxy Training Network</a> and all the contributors!
 
 
-
-
-<img src="/training-material/assets/images/GTN.png" alt="Galaxy Training Network" style="height: 100px;"/>
+<img src="/training-material/assets/images/GTNLogo1000.png" alt="Galaxy Training Network" style="height: 100px;"/>
 
 
 This material is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 </section>
 
+
+
+
+
         </div>
-        
-            <footer>
-    <div class="container">
-        <br><br>
-        <p>
-            The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
-            provides researchers with online training materials, connects them with local trainers, and helps promoting open data analysis practices worldwide.
-        </p>
-        <p>
-The content of the tutorials is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. The website and infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>.
-</p>
-        <p>This is revision <a href="https://github.com/galaxyproject/training-material/commit/57799a8c856c0806d6a93e66bdd3d7169ab79567">57799a8c856c0806d6a93e66bdd3d7169ab79567</a></p>
+        <footer>
+	<hr />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" style="text-align: left">
+				<p>
+					The <a href="https://galaxyproject.org/teach/gtn/">Galaxy Training Network</a>
+					provides researchers with online training materials, connects them with local trainers, and helps promoting FAIR and Open Science practices worldwide. All contributions are subject to the <a rel="code-of-conduct" href="https://galaxyproject.org/community/coc/">Galaxy Project Code of Conduct</a>.
+				</p>
+				<p>
+				The GTN infrastructure is licensed under <a rel="license" href="https://github.com/galaxyproject/training-material/blob/main/LICENSE.md">MIT</a>
+				</p>
+				<p>
+				Revision <a href="https://github.com/galaxyproject/training-material/commit/ccccd1fb4d0598ecdaabad8b57a5835f5cd13dcf">ccccd1f</a>, built with Jekyll (4.3.2 | production)
+				</p>
+			</div>
+			<div class="col-sm-6" style="text-align: right">
+				
+				<p>
+					<i>This Material</i>:
+					
+					is licensed under
+					<a rel="license" href="https://spdx.org/licenses/CC-BY-4.0">
+						Creative Commons Attribution 4.0 International License
+					</a>
+				</p>
+				<p>
+					<a href="https://github.com/galaxyproject/training-material/edit/main/./topics/dev/tutorials/visualization-charts/slides.html" title="Edit on GitHub">
+					<i class="fab fa-github" aria-hidden="true"></i><span class="visually-hidden">github</span> Edit on GitHub
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
     </div>
 </footer>
 
-        
+
+        <script src='/training-material/assets/js/bundle.main.js?v=1695112553'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </body>
-    <script type="text/javascript" src="/training-material/assets/js/jquery.slim.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap.min.js?v=3"></script>
-    <script type="text/javascript" src="/training-material/assets/js/details-element-polyfill.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="/training-material/assets/js/bootstrap-toc.min.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/main.js"></script>
-    <script type="text/javascript" src="/training-material/assets/js/theme.js"></script>
-
-    <script type="text/javascript" src="/training-material/assets/js/clipboard.min.js"></script>
-    <script type="text/javascript">
-    var snippets=document.querySelectorAll('div.highlight');
-    [].forEach.call(snippets,function(snippet){
-        snippet.firstChild.insertAdjacentHTML('beforebegin','<button class="btn btn-light" data-clipboard-snippet><i class="fa fa-copy"></i>&nbsp;Copy</button>');
-    });
-
-    var clipboardSnippets=new ClipboardJS('[data-clipboard-snippet]',{
-        target:function(trigger){return trigger.nextElementSibling;
-    }});
-    </script>
-    
-
-    <script type="text/javascript">
-        if(window.location.hostname === "galaxyproject.github.io") {
-            // Redirect
-            var redirect = "https://training.galaxyproject.org" + window.location.pathname + window.location.search;
-            $('div.container.main-content').prepend("<div class='alert alert-warning'><strong>Note: </strong>This content has a new home at <a href=\"" + redirect + "\">" + redirect + "</a>, which you will be redirected to in 5 seconds.</div>");
-
-            window.setTimeout(function(){
-                window.location.href = redirect;
-            }, 5000)
-
-        }
-    </script>
 </html>
