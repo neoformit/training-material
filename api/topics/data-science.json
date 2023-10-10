@@ -200,11 +200,6 @@
             "usegalaxy": "false"
           },
           {
-            "url": "https://usegalaxy.eu",
-            "name": "UseGalaxy.eu",
-            "usegalaxy": "true"
-          },
-          {
             "url": "https://usegalaxy.fr/",
             "name": "UseGalaxy.fr",
             "usegalaxy": "true"
@@ -238,6 +233,10 @@
             "url": "https://galaxytrakr.org/",
             "name": "GalaxyTrakr",
             "usegalaxy": "false"
+          },
+          {
+            "url": "https://galaxy.bio.di.uminho.pt/",
+            "name": "PhagePromotor"
           },
           {
             "url": "https://usegalaxy.be/",
@@ -1765,11 +1764,6 @@
             "url": "https://galaxy.genouest.org",
             "name": "Galaxy@GenOuest",
             "usegalaxy": "false"
-          },
-          {
-            "url": "https://usegalaxy.eu",
-            "name": "UseGalaxy.eu",
-            "usegalaxy": "true"
           },
           {
             "url": "https://usegalaxy.fr/",
@@ -3508,11 +3502,6 @@
             "usegalaxy": "false"
           },
           {
-            "url": "https://usegalaxy.eu",
-            "name": "UseGalaxy.eu",
-            "usegalaxy": "true"
-          },
-          {
             "url": "https://usegalaxy.fr/",
             "name": "UseGalaxy.fr",
             "usegalaxy": "true"
@@ -3958,11 +3947,6 @@
             "url": "https://galaxy.genouest.org",
             "name": "Galaxy@GenOuest",
             "usegalaxy": "false"
-          },
-          {
-            "url": "https://usegalaxy.eu",
-            "name": "UseGalaxy.eu",
-            "usegalaxy": "true"
           },
           {
             "url": "https://usegalaxy.fr/",
