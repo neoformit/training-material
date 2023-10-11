@@ -115,7 +115,11 @@
 
     ],
     "inexact": [
-
+      {
+        "url": "https://usegalaxy.eu",
+        "name": "UseGalaxy.eu",
+        "usegalaxy": "true"
+      }
     ]
   },
   "topic_name_human": "Assembly",
